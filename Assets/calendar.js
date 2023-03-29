@@ -7,7 +7,7 @@ KB.component('calendar', function (containerElement, options) {
 
     this.render = function () {
         var calendar = $(containerElement);
-        var mode = 'month';
+        var mode = $('#form-calendar_view').val();
         if (window.location.hash) { // Check if hash contains mode
             var hashMode = window.location.hash.substr(1);
             mode = modeMapping[hashMode] || mode;
@@ -34,13 +34,13 @@ KB.component('calendar', function (containerElement, options) {
                 function replacer(name, val) {
                     // This function takes the values in the "droppedEvent" above,
                     // as name: value, and returns the values for the ajax function
-                    // below. 
-                    // 
-                    // There is some weirdness how this returns. If there is _just_ a 
+                    // below.
+                    //
+                    // There is some weirdness how this returns. If there is _just_ a
                     // due date, then val.end will be null, and val.start will be the
                     // due date. Otherwise, if the start_date is specified, the val.end
                     // will be the due_date and val.start will be the date_started.
-                    // 
+                    //
                     // I don't necessarily like the switcheroo, but this seems to work.
                     // And while we could handle this logic above maybe, this is where
                     // I've gotten it to work first, so let's just leave it here until

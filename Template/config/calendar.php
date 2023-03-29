@@ -5,25 +5,24 @@
 
     <?= $this->form->csrf() ?>
 
-    <fieldset>
-        <legend><?= t('Project calendar view') ?></legend>
-        <?= $this->form->radios('calendar_project_tasks', array(
-                'date_creation' => t('Show tasks based on the creation date'),
-                'date_started' => t('Show tasks based on the start date'),
-            ),
-            $values
-        ) ?>
-    </fieldset>
+    <?= $this->form->label('Project calendar based on', 'calendar_project_tasks') ?>
+    <?= $this->form->select('calendar_project_tasks', array(
+        'date_started'  => t('Start date'),
+        'date_creation' => t('Creation date'),
+    ), $values) ?>
 
-    <fieldset>
-        <legend><?= t('User calendar view') ?></legend>
-        <?= $this->form->radios('calendar_user_tasks', array(
-                'date_creation' => t('Show tasks based on the creation date'),
-                'date_started' => t('Show tasks based on the start date'),
-            ),
-            $values
-        ) ?>
-    </fieldset>
+    <?= $this->form->label('User calendar based on', 'calendar_user_tasks') ?>
+    <?= $this->form->select('calendar_user_tasks', array(
+        'date_started'  => t('Start date'),
+        'date_creation' => t('Creation date'),
+    ), $values) ?>
+
+    <?= $this->form->label(t('Preferred calendar view'), 'calendar_view') ?>
+    <?= $this->form->select('calendar_view', array(
+        'month'       => t('Month'),
+        'agendaWeek'  => t('Week'),
+        'agendaDay'   => t('Day'),
+    ), $values) ?>
 
     <div class="form-actions">
         <button type="submit" class="btn btn-blue"><?= t('Save') ?></button>

@@ -1,3 +1,4 @@
+<?= $this->form->hidden('calendar_view',array('calendar_view' => $view)) ?>
 <?= $this->projectHeader->render($project, 'CalendarController', 'project', false, 'Calendar') ?>
 
 <?= $this->calendar->render(
