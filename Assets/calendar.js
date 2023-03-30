@@ -15,6 +15,7 @@ KB.component('calendar', function (containerElement, options) {
 
         calendar.fullCalendar({
             locale: $("html").attr('lang'),
+            firstDay: $('#form-calendar_firstday').val(),
             editable: true,
             eventLimit: true,
             defaultView: mode,

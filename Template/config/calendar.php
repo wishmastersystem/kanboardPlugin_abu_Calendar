@@ -24,6 +24,12 @@
         'agendaDay'   => t('Day'),
     ), $values) ?>
 
+    <?= $this->form->label(t('First day of week'), 'calendar_firstday') ?>
+    <?= $this->form->select('calendar_firstday', array(
+        '0' => t('Sunday'),
+        '1' => t('Monday'),
+    ), $values) ?>
+
     <div class="form-actions">
         <button type="submit" class="btn btn-blue"><?= t('Save') ?></button>
     </div>
