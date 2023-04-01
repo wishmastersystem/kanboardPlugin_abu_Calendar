@@ -16,6 +16,7 @@ KB.component('calendar', function (containerElement, options) {
         calendar.fullCalendar({
             locale: $("html").attr('lang'),
             firstDay: $('#form-calendar_firstday').val(),
+            eventTimeFormat: $('#form-calendar_timeformat').val(),
             editable: true,
             eventLimit: true,
             defaultView: mode,
@@ -25,7 +26,6 @@ KB.component('calendar', function (containerElement, options) {
                 right: 'month,agendaWeek,agendaDay'
             },
             eventDrop: function(event) {
-                // console.log(event)
                 var droppedEvent = {
                     "task_id": event.id,
                     "date_due": event,

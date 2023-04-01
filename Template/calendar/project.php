@@ -1,5 +1,4 @@
-<?= $this->form->hidden('calendar_view',array('calendar_view' => $view)) ?>
-<?= $this->form->hidden('calendar_firstday',array('calendar_firstday' => $firstDay)) ?>
+<?= $this->render('Calendar:calendar/params', array('params' => $params)) ?>
 <?= $this->projectHeader->render($project, 'CalendarController', 'project', false, 'Calendar') ?>
 
 <?= $this->calendar->render(

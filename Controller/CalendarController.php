@@ -23,9 +23,8 @@ class CalendarController extends BaseController
         $user = $this->getUser();
 
         $this->response->html($this->helper->layout->app('Calendar:calendar/user', array(
-            'user' => $user,
-            'view' => $this->configModel->get('calendar_view', 'month'),
-            'firstDay' => $this->configModel->get('calendar_firstday', '0'),
+            'user'    => $user,
+            'params'  => $this->helper->calendar->getParams(),
         )));
     }
 
@@ -37,8 +36,7 @@ class CalendarController extends BaseController
             'project'     => $project,
             'title'       => $project['name'],
             'description' => $this->helper->projectHeader->getDescription($project),
-            'view'        => $this->configModel->get('calendar_view', 'month'),
-            'firstDay'    => $this->configModel->get('calendar_firstday', '0'),
+            'params'      => $this->helper->calendar->getParams(),
         )));
     }
 
