@@ -3,7 +3,6 @@
 namespace Kanboard\Plugin\Calendar\Helper;
 
 use Kanboard\Core\Base;
-use Kanboard\Core\DateParser;
 
 /**
  * Calendar Helper
@@ -40,7 +39,7 @@ class CalendarHelper extends Base
       return array(
         'view'        => $this->configModel->get('calendar_view', 'month'),
         'firstDay'    => $this->configModel->get('calendar_firstday', '0'),
-        'timeFormat'  => $this->configModel->get('application_time_format', DateParser::TIME_FORMAT) == DateParser::TIME_FORMAT ? 'HH:mm' : '',
+        'timeFormat'  => $this->dateParser->getUserTimeFormat(),
       );
     }
 }

@@ -5,6 +5,14 @@ KB.component('calendar', function (containerElement, options) {
         day: 'agendaDay'
     };
 
+    let getTimeFormat = function() {
+        let fmt24h = $('#form-calendar_timeformat').val() === 'H:i';
+        return [
+           fmt24h ? 'HH' : null,    // slotLabelFormat
+           fmt24h ? 'HH:mm': null,  // eventTimeFormat
+        ];
+    }
+
     this.render = function () {
         var calendar = $(containerElement);
         var mode = $('#form-calendar_view').val();
@@ -13,12 +21,16 @@ KB.component('calendar', function (containerElement, options) {
             mode = modeMapping[hashMode] || mode;
         }
 
+        let timeformat = getTimeFormat();
+
         calendar.fullCalendar({
             locale: $("html").attr('lang'),
             firstDay: $('#form-calendar_firstday').val(),
-            eventTimeFormat: $('#form-calendar_timeformat').val(),
             editable: true,
             eventLimit: true,
+            slotLabelFormat: timeformat[0],
+            eventTimeFormat: timeformat[1],
+
             defaultView: mode,
             header: {
                 left: 'prev,next today',
