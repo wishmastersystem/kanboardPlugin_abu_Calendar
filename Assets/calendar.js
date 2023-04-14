@@ -13,6 +13,10 @@ KB.component('calendar', function (containerElement, options) {
         ];
     }
 
+    let getBool = function(name) {
+        return $(`#form-${name}`).val() == '1';
+    }
+
     this.render = function () {
         var calendar = $(containerElement);
         var mode = $('#form-calendar_view').val();
@@ -32,6 +36,12 @@ KB.component('calendar', function (containerElement, options) {
             eventTimeFormat: timeformat[1],
 
             defaultView: mode,
+
+            allDaySlot:     getBool('calendar_allday'),
+            navLinks:       getBool('calendar_navlinks'),
+            nowIndicator:   getBool('calendar_nowindic'),
+            weekNumbers:    getBool('calendar_weeknums'),
+
             header: {
                 left: 'prev,next today',
                 center: 'title',

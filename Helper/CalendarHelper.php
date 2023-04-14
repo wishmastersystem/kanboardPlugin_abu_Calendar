@@ -37,9 +37,13 @@ class CalendarHelper extends Base
     public function getParams(): array
     {
       return array(
-        'view'        => $this->configModel->get('calendar_view', 'month'),
-        'firstDay'    => $this->configModel->get('calendar_firstday', '0'),
-        'timeFormat'  => $this->dateParser->getUserTimeFormat(),
+        'allDaySlot'    => $this->configModel->get('calendar_allday', '1'),
+        'firstDay'      => $this->configModel->get('calendar_firstday', '0'),
+        'navLinks'      => $this->configModel->get('calendar_navlinks', '1'),
+        'nowIndicator'  => $this->configModel->get('calendar_nowindic', '1'),
+        'timeFormat'    => $this->dateParser->getUserTimeFormat(),
+        'view'          => $this->configModel->get('calendar_view', 'month'),
+        'weekNumbers'   => $this->configModel->get('calendar_weeknums', '1'),
       );
     }
 }

@@ -17,19 +17,49 @@
         'date_creation' => t('Creation date'),
     ), $values) ?>
 
-    <?= $this->form->label(t('Preferred calendar view'), 'calendar_view') ?>
-    <?= $this->form->select('calendar_view', array(
-        'month'       => t('Month'),
-        'agendaWeek'  => t('Week'),
-        'agendaDay'   => t('Day'),
-    ), $values) ?>
+    <fieldset>
+        <legend><?= t('Display options') ?></legend>
 
-    <?= $this->form->label(t('First day of week'), 'calendar_firstday') ?>
-    <?= $this->form->select('calendar_firstday', array(
-        '0' => t('Sunday'),
-        '1' => t('Monday'),
-    ), $values) ?>
+        <?= $this->form->label(t('Preferred calendar view'), 'calendar_view') ?>
+        <?= $this->form->select('calendar_view', array(
+            'month'       => t('Month'),
+            'agendaWeek'  => t('Week'),
+            'agendaDay'   => t('Day'),
+        ), $values) ?>
 
+        <?= $this->form->label(t('First day of week'), 'calendar_firstday') ?>
+        <?= $this->form->select('calendar_firstday', array(
+            '0' => t('Sunday'),
+            '1' => t('Monday'),
+        ), $values) ?>
+
+        <?php $checkbox = 'Calendar:config/checkbox' ?>
+
+        <?= $this->render($checkbox, array(
+            'label'  => t('Display the “all-day” slot'),
+            'name'   => 'calendar_allday',
+            'values' => $values,
+        )) ?>
+
+        <?= $this->render($checkbox, array(
+            'label'  => t('Display Week Numbers'),
+            'name'   => 'calendar_weeknums',
+            'values' => $values,
+        )) ?>
+
+        <?= $this->render($checkbox, array(
+            'label'  => t('Display Now Indicator'),
+            'name'   => 'calendar_nowindic',
+            'values' => $values,
+        )) ?>
+
+        <?= $this->render($checkbox, array(
+            'label'  => t('Add Date Nav Links'),
+            'name'   => 'calendar_navlinks',
+            'values' => $values,
+        )) ?>
+        <p class="form-help"><?= t('To navigate, day- and week names/numbers are clickable.') ?></p>
+    </fieldset>
     <div class="form-actions">
         <button type="submit" class="btn btn-blue"><?= t('Save') ?></button>
     </div>
