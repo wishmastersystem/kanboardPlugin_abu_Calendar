@@ -64,6 +64,7 @@ class TaskCalendarFormatter extends BaseFormatter implements FormatterInterface
     public function format()
     {
         $editable = $this->configModel->get('calendar_dragging', CALENDAR_DRAGGING) == '1';
+        $alldayConf = $this->configModel->get('calendar_allday', CALENDAR_ALLDAY) == '1';
         $events = array();
 
         foreach ($this->query->findAll() as $task) {
@@ -81,7 +82,9 @@ class TaskCalendarFormatter extends BaseFormatter implements FormatterInterface
                 $endDate->setTimestamp($task[$this->effectiveEndColumn]);
             }
 
-            $allDay = $startDate == $endDate && $endDate->format('Hi') == '0000';
+            $allDay = $alldayConf
+                ? $startDate->format('Hi') == '0000' && $endDate->format('Hi') == '0000'
+                : $allDay = $startDate == $endDate && $endDate->format('Hi') == '0000';
             $format = $allDay ? 'Y-m-d' : 'Y-m-d\TH:i:s';
 
             $events[] = array(

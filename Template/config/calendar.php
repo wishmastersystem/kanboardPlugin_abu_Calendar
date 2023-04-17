@@ -43,6 +43,13 @@
         )) ?>
 
         <?= $this->render($checkbox, array(
+            'label'   => t('Display long events as "all-day"'),
+            'name'    => 'calendar_allday',
+            'default' => CALENDAR_ALLDAY,
+            'values'  => $values,
+        )) ?>
+
+        <?= $this->render($checkbox, array(
             'label'   => t('Display Week Numbers'),
             'name'    => 'calendar_weeknums',
             'default' => CALENDAR_WEEKNUMS,
