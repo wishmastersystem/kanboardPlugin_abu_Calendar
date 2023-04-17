@@ -46,16 +46,12 @@ class CalendarController extends BaseController
         $startRange = $this->request->getStringParam('start');
         $endRange = $this->request->getStringParam('end');
         $search = $this->userSession->getFilters($projectId);
-        $startColumn = $this->configModel->get('calendar_project_tasks', 'date_started');
+        $startColumn = $this->configModel->get('calendar_project_tasks', CALENDAR_PROJECT_TASKS);
 
         $dueDateOnlyEvents = $this->taskLexer->build($search)
             ->withFilter(new TaskProjectFilter($projectId))
             ->withFilter(new TaskDueDateRangeFilter(array($startRange, $endRange)))
             ->format($this->taskCalendarFormatter->setColumns('date_due'));
-
-        // foreach ($dueDateOnlyEvents as &$duevent) {
-        //     $duevent['due'] = '1';
-        // }
 
         $startAndDueDateQueryBuilder = $this->taskLexer->build($search)
             ->withFilter(new TaskProjectFilter($projectId));
@@ -83,7 +79,7 @@ class CalendarController extends BaseController
         $user_id = $this->request->getIntegerParam('user_id');
         $startRange = $this->request->getStringParam('start');
         $endRange = $this->request->getStringParam('end');
-        $startColumn = $this->configModel->get('calendar_project_tasks', 'date_started');
+        $startColumn = $this->configModel->get('calendar_user_tasks', CALENDAR_USER_TASKS);
 
         $dueDateOnlyEvents = $this->taskQuery
             ->withFilter(new TaskAssigneeFilter($user_id))

@@ -19,7 +19,7 @@ class CalendarHelper extends Base
      * @param  string $saveUrl
      * @return string
      */
-    public function render($checkUrl, $saveUrl)
+    public function render($checkUrl, $saveUrl): string
     {
         $params = array(
             'checkUrl' => $checkUrl,
@@ -37,13 +37,13 @@ class CalendarHelper extends Base
     public function getParams(): array
     {
       return array(
-        'allDaySlot'    => $this->configModel->get('calendar_allday', '1'),
-        'firstDay'      => $this->configModel->get('calendar_firstday', '0'),
-        'navLinks'      => $this->configModel->get('calendar_navlinks', '1'),
-        'nowIndicator'  => $this->configModel->get('calendar_nowindic', '1'),
+        'allDaySlot'    => $this->configModel->get('calendar_alldayslot', CALENDAR_ALLDAYSLOT),
+        'firstDay'      => $this->configModel->get('calendar_firstday', CALENDAR_FIRSTDAY),
+        'navLinks'      => $this->configModel->get('calendar_navlinks', CALENDAR_NAVLINKS),
+        'nowIndicator'  => $this->configModel->get('calendar_nowindic', CALENDAR_NOWINDIC),
         'timeFormat'    => $this->dateParser->getUserTimeFormat(),
-        'view'          => $this->configModel->get('calendar_view', 'month'),
-        'weekNumbers'   => $this->configModel->get('calendar_weeknums', '1'),
+        'view'          => $this->configModel->get('calendar_view', CALENDAR_VIEW),
+        'weekNumbers'   => $this->configModel->get('calendar_weeknums', CALENDAR_WEEKNUMS),
       );
     }
 }

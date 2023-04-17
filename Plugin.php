@@ -7,6 +7,8 @@ use Kanboard\Core\Translator;
 use Kanboard\Plugin\Calendar\Formatter\ProjectApiFormatter;
 use Kanboard\Plugin\Calendar\Formatter\TaskCalendarFormatter;
 
+require_once('SettingDefaults.php');
+
 class Plugin extends Base
 {
     public function initialize()

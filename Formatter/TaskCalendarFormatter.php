@@ -63,7 +63,7 @@ class TaskCalendarFormatter extends BaseFormatter implements FormatterInterface
      */
     public function format()
     {
-        $editable = $this->configModel->get('calendar_dragging', '1') == '1';
+        $editable = $this->configModel->get('calendar_dragging', CALENDAR_DRAGGING) == '1';
         $events = array();
 
         foreach ($this->query->findAll() as $task) {

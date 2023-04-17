@@ -36,33 +36,38 @@
         <?php $checkbox = 'Calendar:config/checkbox' ?>
 
         <?= $this->render($checkbox, array(
-            'label'  => t('Display the “all-day” slot'),
-            'name'   => 'calendar_allday',
-            'values' => $values,
+            'label'   => t('Display the “all-day” slot'),
+            'name'    => 'calendar_alldayslot',
+            'default' => CALENDAR_ALLDAYSLOT,
+            'values'  => $values,
         )) ?>
 
         <?= $this->render($checkbox, array(
-            'label'  => t('Display Week Numbers'),
-            'name'   => 'calendar_weeknums',
-            'values' => $values,
+            'label'   => t('Display Week Numbers'),
+            'name'    => 'calendar_weeknums',
+            'default' => CALENDAR_WEEKNUMS,
+            'values'  => $values,
         )) ?>
 
         <?= $this->render($checkbox, array(
-            'label'  => t('Display Now Indicator'),
-            'name'   => 'calendar_nowindic',
-            'values' => $values,
+            'label'   => t('Display Now Indicator'),
+            'name'    => 'calendar_nowindic',
+            'default' => CALENDAR_NOWINDIC,
+            'values'  => $values,
         )) ?>
 
         <?= $this->render($checkbox, array(
-            'label'  => t('Moving and resizing of events/tasks'),
-            'name'   => 'calendar_dragging',
-            'values' => $values,
+            'label'   => t('Moving and resizing of events/tasks'),
+            'name'    => 'calendar_dragging',
+            'default' => CALENDAR_DRAGGING,
+            'values'  => $values,
         )) ?>
 
         <?= $this->render($checkbox, array(
-            'label'  => t('Add Date Nav Links'),
-            'name'   => 'calendar_navlinks',
-            'values' => $values,
+            'label'   => t('Add Date Nav Links'),
+            'name'    => 'calendar_navlinks',
+            'default' => CALENDAR_NAVLINKS,
+            'values'  => $values,
         )) ?>
         <p class="form-help"><?= t('To navigate, day- and week names/numbers are clickable.') ?></p>
     </fieldset>
