@@ -63,6 +63,7 @@ class TaskCalendarFormatter extends BaseFormatter implements FormatterInterface
      */
     public function format()
     {
+        $editable = $this->configModel->get('calendar_dragging', '1') == '1';
         $events = array();
 
         foreach ($this->query->findAll() as $task) {
@@ -80,8 +81,8 @@ class TaskCalendarFormatter extends BaseFormatter implements FormatterInterface
                 $endDate->setTimestamp($task[$this->effectiveEndColumn]);
             }
 
-            $allDay = $startDate == $endDate && $endDate->format('Hi') == '0000'; // FIXME
-            $format = $allDay ? 'Y-m-d' : 'Y-m-d\TH:i:s'; // FIXME
+            $allDay = $startDate == $endDate && $endDate->format('Hi') == '0000';
+            $format = $allDay ? 'Y-m-d' : 'Y-m-d\TH:i:s';
 
             $events[] = array(
                 'timezoneParam' => $this->timezoneModel->getCurrentTimezone(),
@@ -93,7 +94,7 @@ class TaskCalendarFormatter extends BaseFormatter implements FormatterInterface
                 'url' => $this->helper->url->to('TaskViewController', 'show', array('task_id' => $task['id'], 'project_id' => $task['project_id'])),
                 'start' => $startDate->format($format),
                 'end' => $endDate->format($format),
-                'editable' => true, // FIXME $allDay,
+                'editable' => $editable,
                 'allday' => $allDay,
             );
         }

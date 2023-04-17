@@ -54,6 +54,12 @@
         )) ?>
 
         <?= $this->render($checkbox, array(
+            'label'  => t('Moving and resizing of events/tasks'),
+            'name'   => 'calendar_dragging',
+            'values' => $values,
+        )) ?>
+
+        <?= $this->render($checkbox, array(
             'label'  => t('Add Date Nav Links'),
             'name'   => 'calendar_navlinks',
             'values' => $values,
