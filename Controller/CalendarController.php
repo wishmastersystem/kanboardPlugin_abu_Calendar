@@ -53,6 +53,10 @@ class CalendarController extends BaseController
             ->withFilter(new TaskDueDateRangeFilter(array($startRange, $endRange)))
             ->format($this->taskCalendarFormatter->setColumns('date_due'));
 
+        // foreach ($dueDateOnlyEvents as &$duevent) {
+        //     $duevent['due'] = '1';
+        // }
+
         $startAndDueDateQueryBuilder = $this->taskLexer->build($search)
             ->withFilter(new TaskProjectFilter($projectId));
 
@@ -114,10 +118,30 @@ class CalendarController extends BaseController
         if ($this->request->isAjax() && $this->request->isPost()) {
             $values = $this->request->getJson();
 
-            $this->taskModificationModel->update(array(
-                'id' => $values['task_id'],
-                'date_due' => substr($values['date_due'], 0, 10),
-            ));
+            if ($task = $this->taskFinderModel->getById($values['task_id'])) {
+                $params = array(
+                    'id' => $values['task_id'],
+                );
+
+                // In case the task was just due but not started, the due date is
+                // currently stored as the start date. We have to swap them here.
+
+                if ($task['date_due'] != 0 && $task['date_started'] == 0) {
+                    $tmp = $values['date_due']; // ''
+                    $values['date_due'] = $values['date_started'];
+                    $values['date_started'] = $tmp;  // ''
+                }
+
+                foreach (array('date_started','date_due') as $property) {
+                    if ($values[$property] != '') {
+                        $params = array_merge($params, array(
+                            $property  => $values[$property],
+                        ));
+                    }
+                }
+
+                $this->taskModificationModel->update($params);
+            }
         }
     }
 
