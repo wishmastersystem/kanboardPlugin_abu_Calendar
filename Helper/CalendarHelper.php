@@ -41,6 +41,8 @@ class CalendarHelper extends Base
         'firstDay'      => $this->configModel->get('calendar_firstday', CALENDAR_FIRSTDAY),
         'maxTime'       => $this->configModel->get('calendar_maxtime', CALENDAR_MAXTIME),
         'minTime'       => $this->configModel->get('calendar_mintime', CALENDAR_MINTIME),
+        'maxTimeBusi'   => $this->configModel->get('calendar_maxtimebusi', CALENDAR_MAXTIMEBUSI),
+        'minTimeBusi'   => $this->configModel->get('calendar_mintimebusi', CALENDAR_MINTIMEBUSI),
         'navLinks'      => $this->configModel->get('calendar_navlinks', CALENDAR_NAVLINKS),
         'nowIndicator'  => $this->configModel->get('calendar_nowindic', CALENDAR_NOWINDIC),
         'timeFormat'    => $this->dateParser->getUserTimeFormat(),

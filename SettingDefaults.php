@@ -17,3 +17,6 @@ define('CALENDAR_DRAGGING',   '1');
 
 define('CALENDAR_MINTIME', '00:00');
 define('CALENDAR_MAXTIME', '24:00');
+
+define('CALENDAR_MINTIMEBUSI', '09:00');
+define('CALENDAR_MAXTIMEBUSI', '17:00');

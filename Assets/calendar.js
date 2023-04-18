@@ -62,6 +62,13 @@ KB.component('calendar', function (containerElement, options) {
             maxTime: $('#form-calendar_maxtime').val(),
             minTime: $('#form-calendar_mintime').val(),
 
+            businessHours: {
+              // Days of week. an array of zero-based day of week integers (0=Sunday)
+              dow: [ 1, 2, 3, 4, 5], // Monday - Thursday
+              start:    $('#form-calendar_maxtimebusi').val(),
+              end:      $('#form-calendar_mintimebusi').val(),
+            },
+
             header: {
                 left: 'prev,next today',
                 center: 'title',
