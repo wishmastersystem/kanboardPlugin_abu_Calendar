@@ -14,3 +14,6 @@ define('CALENDAR_NAVLINKS',   '1');
 define('CALENDAR_NOWINDIC',   '1');
 define('CALENDAR_WEEKNUMS',   '1');
 define('CALENDAR_DRAGGING',   '1');
+
+define('CALENDAR_MINTIME', '00:00');
+define('CALENDAR_MAXTIME', '24:00');

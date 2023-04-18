@@ -59,6 +59,9 @@ KB.component('calendar', function (containerElement, options) {
             nowIndicator:   getBool('calendar_nowindic'),
             weekNumbers:    getBool('calendar_weeknums'),
 
+            maxTime: $('#form-calendar_maxtime').val(),
+            minTime: $('#form-calendar_mintime').val(),
+
             header: {
                 left: 'prev,next today',
                 center: 'title',

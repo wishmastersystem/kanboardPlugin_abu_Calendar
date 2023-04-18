@@ -77,6 +77,13 @@
             'values'  => $values,
         )) ?>
         <p class="form-help"><?= t('To navigate, day- and week names/numbers are clickable.') ?></p>
+
+        <!-- text($name, $values = array(), array $errors = array(), array $attributes = array(), $class = '') -->
+        <?= $this->form->label(t('Time-Axis Settings'), 'calendar_view') ?>
+        <?= $this->form->text('calendar_mintime', $values, array(), array(), 'cal-tp') ?>
+        <span>to</span>
+        <?= $this->form->text('calendar_maxtime', $values, array(), array(), 'cal-tp') ?>
+
     </fieldset>
     <div class="form-actions">
         <button type="submit" class="btn btn-blue"><?= t('Save') ?></button>

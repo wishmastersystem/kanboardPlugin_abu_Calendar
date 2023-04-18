@@ -33,6 +33,8 @@ class Plugin extends Base
         $this->hook->on('template:layout:js', array('template' => 'plugins/Calendar/Assets/vendor/fullcalendar.min.js'));
         $this->hook->on('template:layout:js', array('template' => 'plugins/Calendar/Assets/vendor/locale-all.js'));
         $this->hook->on('template:layout:js', array('template' => 'plugins/Calendar/Assets/calendar.js'));
+        $this->hook->on('template:layout:js', array('template' => 'plugins/Calendar/Assets/config.js'));
+        $this->hook->on('template:layout:css', array('template' => 'plugins/Calendar/Assets/config.css'));
     }
 
     public function onStartup()
