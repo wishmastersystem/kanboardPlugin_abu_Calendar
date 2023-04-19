@@ -2,3 +2,7 @@
 .cal-tp {
     width: 60px !important;
 }
+
+.cal-dp {
+    visibility: hidden;
+}

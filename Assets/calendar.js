@@ -45,7 +45,7 @@ KB.component('calendar', function (containerElement, options) {
 
         calendar.fullCalendar({
             locale: $("html").attr('lang'),
-            firstDay: $('#form-calendar_firstday').val(),
+            firstDay: Number($('#form-calendar_firstday').val()),
             slotLabelFormat: timeformat[0],
             eventTimeFormat: timeformat[1],
 
@@ -58,6 +58,7 @@ KB.component('calendar', function (containerElement, options) {
             navLinks:       getBool('calendar_navlinks'),
             nowIndicator:   getBool('calendar_nowindic'),
             weekNumbers:    getBool('calendar_weeknums'),
+            weekNumberCalculation: 'ISO',
 
             maxTime: $('#form-calendar_maxtime').val(),
             minTime: $('#form-calendar_mintime').val(),
@@ -70,9 +71,19 @@ KB.component('calendar', function (containerElement, options) {
             },
 
             header: {
-                left: 'prev,next today',
+                left: 'prev,next today gotoDate',
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay'
+            },
+
+            customButtons: {
+                gotoDate: {
+                    text: 'date...',
+                    click: function() {
+                        $('.cal-dp').val('');
+                        $('.cal-dp').datepicker('show');
+                    }
+                }
             },
 
             eventDrop: function(event) {
@@ -144,6 +155,23 @@ KB.component('calendar', function (containerElement, options) {
                 });
             }
         });
+
+        const toolBar = document.querySelector("div.fc-header-toolbar");
+        const leftToolbar = toolBar.querySelectorAll("div.fc-left");
+        $(leftToolbar).append('<input type="text" class="cal-dp" />');
+
+        $('.cal-dp').datepicker({
+            // changeYear: true,
+            showWeek: getBool('calendar_weeknums'),
+            firstDay: Number($('#form-calendar_firstday').val()),
+            onClose: function(dateText, obj) {
+                let date = $(this).val();
+                if (date.length) {
+                    calendar.fullCalendar('gotoDate', date);
+                }
+            }
+        });
+
     };
 });
 

@@ -29,12 +29,12 @@ class Plugin extends Base
         $this->template->hook->attach('template:config:sidebar', 'Calendar:config/sidebar');
 
         $this->hook->on('template:layout:css', array('template' => 'plugins/Calendar/Assets/vendor/fullcalendar.min.css'));
+        $this->hook->on('template:layout:css', array('template' => 'plugins/Calendar/Assets/calendar.css'));
         $this->hook->on('template:layout:js', array('template' => 'plugins/Calendar/Assets/vendor/moment.min.js'));
         $this->hook->on('template:layout:js', array('template' => 'plugins/Calendar/Assets/vendor/fullcalendar.min.js'));
         $this->hook->on('template:layout:js', array('template' => 'plugins/Calendar/Assets/vendor/locale-all.js'));
         $this->hook->on('template:layout:js', array('template' => 'plugins/Calendar/Assets/calendar.js'));
         $this->hook->on('template:layout:js', array('template' => 'plugins/Calendar/Assets/config.js'));
-        $this->hook->on('template:layout:css', array('template' => 'plugins/Calendar/Assets/config.css'));
     }
 
     public function onStartup()
