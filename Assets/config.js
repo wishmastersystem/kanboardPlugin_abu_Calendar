@@ -9,4 +9,4 @@ $(function () {
         stepMinute: 30,
         timeFormat: 'HH:mm',
     });
-})
+});

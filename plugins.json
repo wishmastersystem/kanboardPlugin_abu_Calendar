@@ -1,0 +1,19 @@
+{
+    "ICalConfig": {
+        "author": "Alfred Bühler",
+        "compatible_version": ">=1.2.20",
+        "description": "Allow some configuration of the iCal calendar feeds.",
+        "download": "https://codeberg.org/api/packages/abu/generic/ICalConfig/${VERSION}/ICalConfig-${VERSION}.zip",
+        "has_hooks": true,
+        "has_overrides": true,
+        "has_schema": false,
+        "homepage": "https://codeberg.org/abu/ICalConfig/",
+        "is_type": "plugin",
+        "last_updated": "${DATE}",
+        "license": "MIT",
+        "readme": "https://codeberg.org/abu/ICalConfig/src/branch/master/README.md",
+        "remote_install": true,
+        "title": "ICalConfig",
+        "version": "${VERSION}"
+    }
+}

@@ -2,14 +2,14 @@ KB.component('calendar', function (containerElement, options) {
     let modeMapping = {
         month: 'month',
         week: 'agendaWeek',
-        day: 'agendaDay'
+        day: 'agendaDay',
     };
 
     function getTimeFormat() {
         let fmt24h = $('#form-calendar_timeformat').val() === 'H:i';
         return [
-           fmt24h ? 'HH' : null,    // slotLabelFormat
-           fmt24h ? 'HH:mm': null,  // eventTimeFormat
+            fmt24h ? 'HH' : null, // slotLabelFormat
+            fmt24h ? 'HH:mm' : null, // eventTimeFormat
         ];
     }
 
@@ -18,7 +18,7 @@ KB.component('calendar', function (containerElement, options) {
     }
 
     function formatTimeString(str) {
-      return `${str.slice(0, 10)} ${str.slice(11, 16)}`;
+        return `${str.slice(0, 10)} ${str.slice(11, 16)}`;
     }
 
     function updateTask(json) {
@@ -26,10 +26,10 @@ KB.component('calendar', function (containerElement, options) {
         $.ajax({
             cache: false,
             url: options.saveUrl,
-            contentType: "application/json",
-            type: "POST",
+            contentType: 'application/json',
+            type: 'POST',
             processData: false,
-            data: json
+            data: json,
         });
     }
 
@@ -44,70 +44,70 @@ KB.component('calendar', function (containerElement, options) {
         let timeformat = getTimeFormat();
 
         calendar.fullCalendar({
-            locale: $("html").attr('lang'),
+            locale: $('html').attr('lang'),
             firstDay: Number($('#form-calendar_firstday').val()),
             slotLabelFormat: timeformat[0],
             eventTimeFormat: timeformat[1],
 
-            editable: false,    // Determines whether the events on the calendar can be modified. Default: false
-            eventLimit: true,   // Limits the number of events displayed on a day. The rest will show up in a popover.
-                                // A value of true will limit the number of events to the height of the day cell.
+            editable: false, // Determines whether the events on the calendar can be modified. Default: false
+            eventLimit: true, // Limits the number of events displayed on a day. The rest will show up in a popover.
+            // A value of true will limit the number of events to the height of the day cell.
             defaultView: mode,
 
-            allDaySlot:     getBool('calendar_allday'),
-            navLinks:       getBool('calendar_navlinks'),
-            nowIndicator:   getBool('calendar_nowindic'),
-            weekNumbers:    getBool('calendar_weeknums'),
+            allDaySlot: getBool('calendar_allday'),
+            navLinks: getBool('calendar_navlinks'),
+            nowIndicator: getBool('calendar_nowindic'),
+            weekNumbers: getBool('calendar_weeknums'),
             weekNumberCalculation: 'ISO',
 
             maxTime: $('#form-calendar_maxtime').val(),
             minTime: $('#form-calendar_mintime').val(),
 
             businessHours: {
-              // Days of week. an array of zero-based day of week integers (0=Sunday)
-              dow: [ 1, 2, 3, 4, 5], // Monday - Thursday
-              start:    $('#form-calendar_maxtimebusi').val(),
-              end:      $('#form-calendar_mintimebusi').val(),
+                // Days of week. an array of zero-based day of week integers (0=Sunday)
+                dow: [1, 2, 3, 4, 5], // Monday - Thursday
+                start: $('#form-calendar_maxtimebusi').val(),
+                end: $('#form-calendar_mintimebusi').val(),
             },
 
             header: {
                 left: 'prev,next today gotoDate',
                 center: 'title',
-                right: 'month,agendaWeek,agendaDay'
+                right: 'month,agendaWeek,agendaDay',
             },
 
             customButtons: {
                 gotoDate: {
                     text: 'date...',
-                    click: function() {
+                    click: function () {
                         $('.cal-dp').val('');
                         $('.cal-dp').datepicker('show');
-                    }
-                }
+                    },
+                },
             },
 
-            eventDrop: function(event) {
+            eventDrop: function (event) {
                 let droppedEvent = {
-                    "task_id": event.id,
-                    "date_due": event,
-                    "date_started": event,
-                }
+                    'task_id': event.id,
+                    'date_due': event,
+                    'date_started': event,
+                };
 
-                updateTask(JSON.stringify(droppedEvent, function(name, val){
+                updateTask(JSON.stringify(droppedEvent, function (name, val) {
                     let droppedDate = null;
 
-                    if ( (name.length == 0) || (name == 'task_id')) {
+                    if ((name.length == 0) || (name == 'task_id')) {
                         return val;
                     } else {
                         switch (name) {
-                            case 'date_started':
-                                droppedDate = val.start ? val.start : null;
-                                break;
-                            case 'date_due':
-                                droppedDate = val.end ? val.end : null;
-                                break;
-                            default:
-                                console.error('Illegal name:', name);
+                        case 'date_started':
+                            droppedDate = val.start ? val.start : null;
+                            break;
+                        case 'date_due':
+                            droppedDate = val.end ? val.end : null;
+                            break;
+                        default:
+                            console.error('Illegal name:', name);
                         }
                         // console.log(name, droppedDate ? formatTimeString(droppedDate.format()) : '#')
                         return droppedDate ? formatTimeString(droppedDate.format()) : '';
@@ -115,13 +115,13 @@ KB.component('calendar', function (containerElement, options) {
                 }));
             },
 
-            eventResize: function(event) {
+            eventResize: function (event) {
                 let droppedEvent = {
-                    "task_id": event.id,
-                    "date_due": event,
+                    'task_id': event.id,
+                    'date_due': event,
                 };
 
-                updateTask(JSON.stringify(droppedEvent, function(name, val){
+                updateTask(JSON.stringify(droppedEvent, function (name, val) {
                     if ((name.length == 0) || (name == 'task_id')) {
                         return val;
                     } else {
@@ -130,7 +130,7 @@ KB.component('calendar', function (containerElement, options) {
                 }));
             },
 
-            viewRender: function(view) {
+            viewRender: function (view) {
                 // Map view.name back and update location.hash
                 for (let id in modeMapping) {
                     if (modeMapping[id] === view.name) { // Found
@@ -141,43 +141,41 @@ KB.component('calendar', function (containerElement, options) {
                 let url = options.checkUrl;
                 let params = {
                     'start': view.start.format(),
-                    'end': view.end.format()
+                    'end': view.end.format(),
                 };
 
                 for (let key in params) {
                     url += '&' + key + '=' + params[key];
                 }
 
-                $.getJSON(url, function(events) {
+                $.getJSON(url, function (events) {
                     // console.log(events);
                     calendar.fullCalendar('removeEvents');
                     calendar.fullCalendar('addEventSource', events);
                 });
-            }
+            },
         });
 
-        const toolBar = document.querySelector("div.fc-header-toolbar");
-        const leftToolbar = toolBar.querySelectorAll("div.fc-left");
+        const toolBar = document.querySelector('div.fc-header-toolbar');
+        const leftToolbar = toolBar.querySelectorAll('div.fc-left');
         $(leftToolbar).append('<input type="text" class="cal-dp" />');
 
         $('.cal-dp').datepicker({
             // changeYear: true,
             showWeek: getBool('calendar_weeknums'),
             firstDay: Number($('#form-calendar_firstday').val()),
-            onClose: function(dateText, obj) {
-                let date = $(this).val();
-                if (date.length) {
-                    calendar.fullCalendar('gotoDate', date);
+            onClose: function (dateText) {
+                if (dateText.length) {
+                    calendar.fullCalendar('gotoDate', dateText);
                 }
-            }
+            },
         });
-
     };
 });
 
 KB.on('dom.ready', function () {
-    function goToLink (selector) {
-        if (! KB.modal.isOpen()) {
+    function goToLink(selector) {
+        if (!KB.modal.isOpen()) {
             let element = KB.find(selector);
 
             if (element !== null) {
