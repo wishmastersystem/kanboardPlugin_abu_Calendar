@@ -1,19 +1,19 @@
 {
-    "ICalConfig": {
-        "author": "Alfred Bühler",
-        "compatible_version": ">=1.2.20",
-        "description": "Allow some configuration of the iCal calendar feeds.",
-        "download": "https://codeberg.org/api/packages/abu/generic/ICalConfig/${VERSION}/ICalConfig-${VERSION}.zip",
+    "Calendar": {
+        "author": "Frédéric Guillot, Alfred Bühler",
+        "compatible_version": ">=1.2.13",
+        "description": "Embedded calendar for Kanboard.",
+        "download": "https://codeberg.org/api/packages/abu/generic/Calendar/${VERSION}/Calendar-${VERSION}.zip",
         "has_hooks": true,
-        "has_overrides": true,
+        "has_overrides": false,
         "has_schema": false,
-        "homepage": "https://codeberg.org/abu/ICalConfig/",
+        "homepage": "https://codeberg.org/abu/Calendar/",
         "is_type": "plugin",
         "last_updated": "${DATE}",
         "license": "MIT",
-        "readme": "https://codeberg.org/abu/ICalConfig/src/branch/master/README.md",
+        "readme": "https://codeberg.org/abu/Calendar/src/branch/master/README.md",
         "remote_install": true,
-        "title": "ICalConfig",
+        "title": "Calendar",
         "version": "${VERSION}"
     }
 }

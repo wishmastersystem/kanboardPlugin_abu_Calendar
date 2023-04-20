@@ -1,22 +1,16 @@
-Calendar Plugin
-===============
+# Calendar Plugin
 
-Embedded calendar view for Kanboard.
+**Embedded calendar for [Kanboard]((https://kanboard.org)).**
 
-Author
-------
+This is my refurbished and extended version, forked from https://gitlab.com/smacz/kanboard-plugin-calendar. It contains several fixes, additions and improvements, bases mostly on my personal needs. It can be used as a full replacement for the earlier versions of Calendar.
 
-- Frédéric Guillot
-- Andrew Cziryak (Maintainer)
-- License MIT
+Please refer to the Changelog for more details.
 
-Requirements
-------------
+## Requirements
 
 - Kanboard >= 1.2.13
 
-Installation
-------------
+## Installation
 
 You have the choice between 3 methods:
 
@@ -25,3 +19,11 @@ You have the choice between 3 methods:
 3. Clone this repository into the folder `plugins/Calendar`
 
 Note: Plugin folder is case-sensitive.
+
+## Authors & Contributors
+
+- Frédéric Guillot - Author
+- [Alfred Bühler](https://codeberg.org/abu) - Author
+
+## License
+- This project is distributed under the [MIT License](https://choosealicense.com/licenses/mit/ "Read The MIT license")

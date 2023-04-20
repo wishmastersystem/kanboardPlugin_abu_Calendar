@@ -49,22 +49,22 @@ class Plugin extends Base
 
     public function getPluginDescription()
     {
-        return t('Calendar view for Kanboard');
+        return t('Calendar for Kanboard');
     }
 
     public function getPluginAuthor()
     {
-        return 'Frédéric Guillot';
+        return 'Frédéric Guillot, Alfred Bühler';
     }
 
     public function getPluginVersion()
     {
-        return '1.2.0';
+        return '1.3.0';
     }
 
     public function getPluginHomepage()
     {
-        return 'https://github.com/kanboard/plugin-calendar';
+        return 'https://codeberg.org/abu/Calendar/';
     }
 
     public function getCompatibleVersion()
