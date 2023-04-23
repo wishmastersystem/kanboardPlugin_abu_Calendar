@@ -13,6 +13,23 @@ KB.component('calendar', function (containerElement, options) {
         ];
     }
 
+    function getWeekdays() {
+        let arr = [];
+        let weekdays = $('#form-calendar_weekdays').val();
+
+        if ($('#form-calendar_firstday').val() == '1') {
+            weekdays = weekdays[weekdays.length - 1] + weekdays.substr(0, 6);
+        }
+
+        for (let i = 0; i < weekdays.length; i++) {
+            if (weekdays[i] == '1') {
+                arr.push(Number(i));
+            }
+        }
+
+        return arr;
+    }
+
     function getBool(name) {
         return $(`#form-${name}`).val() == '1';
     }
@@ -65,7 +82,7 @@ KB.component('calendar', function (containerElement, options) {
 
             businessHours: {
                 // Days of week. an array of zero-based day of week integers (0=Sunday)
-                dow: [1, 2, 3, 4, 5], // Monday - Thursday
+                dow: getWeekdays(),
                 start: $('#form-calendar_maxtimebusi').val(),
                 end: $('#form-calendar_mintimebusi').val(),
             },

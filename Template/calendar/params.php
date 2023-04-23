@@ -9,3 +9,4 @@
 <?= $this->form->hidden('calendar_timeformat',  array('calendar_timeformat'  => $params['timeFormat'])) ?>
 <?= $this->form->hidden('calendar_view',        array('calendar_view'        => $params['view'])) ?>
 <?= $this->form->hidden('calendar_weeknums',    array('calendar_weeknums'    => $params['weekNumbers'])) ?>
+<?= $this->form->hidden('calendar_weekdays',    array('calendar_weekdays'    => $params['weekDays'])) ?>

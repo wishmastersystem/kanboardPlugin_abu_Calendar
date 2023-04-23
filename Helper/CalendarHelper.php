@@ -48,6 +48,7 @@ class CalendarHelper extends Base
             'timeFormat'    => $this->dateParser->getUserTimeFormat(),
             'view'          => $this->configModel->get('calendar_view', CALENDAR_VIEW),
             'weekNumbers'   => $this->configModel->get('calendar_weeknums', CALENDAR_WEEKNUMS),
+            'weekDays'      => $this->configModel->get('calendar_weekdays', CALENDAR_WEEKDAYS),
         );
     }
 }

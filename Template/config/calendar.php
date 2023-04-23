@@ -1,7 +1,7 @@
 <div class="page-header">
     <h2><?= t('Calendar settings') ?></h2>
 </div>
-<form method="post" action="<?= $this->url->href('ConfigController', 'save', array('plugin' => 'Calendar')) ?>" autocomplete="off">
+<form id='cal-config' method="post" action="<?= $this->url->href('ConfigController', 'save', array('plugin' => 'Calendar')) ?>" autocomplete="off">
 
     <?= $this->form->csrf() ?>
 
@@ -87,6 +87,22 @@
         <?= $this->form->text('calendar_mintimebusi', $values, array(), array(), 'cal-tp') ?>
         <span>to</span>
         <?= $this->form->text('calendar_maxtimebusi', $values, array(), array(), 'cal-tp') ?>
+
+        <?php $firstday = $this->helper->calendar->getParams()['firstDay'] ?>
+        <?= $this->form->label(
+                $firstday == '1' ? t('Weekdays, Mon ... Sun') : t('Weekdays, Sun ... Sat'),
+                'calendar_weekdays'
+            )
+        ?>
+        <?= $this->form->hidden('calendar_weekdays', $values, array(), array()) ?>
+
+        <input type='checkbox' class='cal-wd' />
+        <input type='checkbox' class='cal-wd' />
+        <input type='checkbox' class='cal-wd' />
+        <input type='checkbox' class='cal-wd' />
+        <input type='checkbox' class='cal-wd' />
+        <input type='checkbox' class='cal-wd' />
+        <input type='checkbox' class='cal-wd' />
 
     </fieldset>
     <div class="form-actions">
