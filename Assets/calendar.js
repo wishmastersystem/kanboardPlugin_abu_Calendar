@@ -13,6 +13,14 @@ KB.component('calendar', function (containerElement, options) {
         ];
     }
 
+    function getMinMaxTime() {
+        let opt = $('#form-calendar_timeaxis').val() == '1';
+        return [
+            opt ? $('#form-calendar_mintime').val() : '00:00',
+            opt ? $('#form-calendar_maxtime').val() : '24:00',
+        ];
+    }
+
     function getWeekdays() {
         let arr = [];
         let weekdays = $('#form-calendar_weekdays').val();
@@ -59,6 +67,7 @@ KB.component('calendar', function (containerElement, options) {
         }
 
         let timeformat = getTimeFormat();
+        let minmaxtime = getMinMaxTime();
 
         calendar.fullCalendar({
             locale: $('html').attr('lang'),
@@ -77,10 +86,10 @@ KB.component('calendar', function (containerElement, options) {
             weekNumbers: getBool('calendar_weeknums'),
             weekNumberCalculation: 'ISO',
 
-            maxTime: $('#form-calendar_maxtime').val(),
-            minTime: $('#form-calendar_mintime').val(),
+            minTime: minmaxtime[0],
+            maxTime: minmaxtime[1],
 
-            businessHours: {
+            businessHours: ($('#form-calendar_business').val() == '0') ? null : {
                 // Days of week. an array of zero-based day of week integers (0=Sunday)
                 dow: getWeekdays(),
                 start: $('#form-calendar_maxtimebusi').val(),

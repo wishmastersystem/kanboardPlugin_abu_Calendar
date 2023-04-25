@@ -10,3 +10,5 @@
 <?= $this->form->hidden('calendar_view',        array('calendar_view'        => $params['view'])) ?>
 <?= $this->form->hidden('calendar_weeknums',    array('calendar_weeknums'    => $params['weekNumbers'])) ?>
 <?= $this->form->hidden('calendar_weekdays',    array('calendar_weekdays'    => $params['weekDays'])) ?>
+<?= $this->form->hidden('calendar_timeaxis',    array('calendar_timeaxis'    => $params['timeAxis'])) ?>
+<?= $this->form->hidden('calendar_business',    array('calendar_business'    => $params['businessHours'])) ?>

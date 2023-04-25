@@ -79,14 +79,26 @@
         <p class="form-help"><?= t('To navigate, day- and week names/numbers are clickable.') ?></p>
 
         <?= $this->form->label(t('Time-Axis Settings'), 'calendar_mintime') ?>
-        <?= $this->form->text('calendar_mintime', $values, array(), array(), 'cal-tp') ?>
+        <?= $this->form->text('calendar_mintime', $values, array(), array(), 'cal-tp cal-tx') ?>
         <span>to</span>
-        <?= $this->form->text('calendar_maxtime', $values, array(), array(), 'cal-tp') ?>
+        <?= $this->form->text('calendar_maxtime', $values, array(), array(), 'cal-tp cal-tx') ?>
+        <?= $this->render($checkbox, array(
+            'label'   => t('Enable'),
+            'name'    => 'calendar_timeaxis',
+            'default' => CALENDAR_TIMEAXIS,
+            'values'  => $values,
+        )) ?>
 
         <?= $this->form->label(t('Business Hour Settings'), 'calendar_view') ?>
-        <?= $this->form->text('calendar_mintimebusi', $values, array(), array(), 'cal-tp') ?>
+        <?= $this->form->text('calendar_mintimebusi', $values, array(), array(), 'cal-tp cal-bh') ?>
         <span>to</span>
-        <?= $this->form->text('calendar_maxtimebusi', $values, array(), array(), 'cal-tp') ?>
+        <?= $this->form->text('calendar_maxtimebusi', $values, array(), array(), 'cal-tp cal-bh') ?>
+        <?= $this->render($checkbox, array(
+            'label'   => t('Enable'),
+            'name'    => 'calendar_business',
+            'default' => CALENDAR_BUSINESS,
+            'values'  => $values,
+        )) ?>
 
         <?php $firstday = $this->helper->calendar->getParams()['firstDay'] ?>
         <?= $this->form->label(

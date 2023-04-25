@@ -49,6 +49,8 @@ class CalendarHelper extends Base
             'view'          => $this->configModel->get('calendar_view', CALENDAR_VIEW),
             'weekNumbers'   => $this->configModel->get('calendar_weeknums', CALENDAR_WEEKNUMS),
             'weekDays'      => $this->configModel->get('calendar_weekdays', CALENDAR_WEEKDAYS),
+            'timeAxis'      => $this->configModel->get('calendar_timeaxis', CALENDAR_TIMEAXIS),
+            'businessHours' => $this->configModel->get('calendar_business', CALENDAR_BUSINESS),
         );
     }
 }

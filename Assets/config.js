@@ -25,4 +25,20 @@ $(function () {
     $('.cal-wd').each(function () {
         this.checked = weekdays[i++] == '1';
     });
+
+    const timeAxis = $('input[name="calendar_timeaxis"]');
+    const timeAxisItems = $('.cal-tx');
+
+    const businessHours = $('input[name="calendar_business"]');
+    const businessHourItems = $('.cal-wd, .cal-bh');
+
+    timeAxisItems.prop('disabled', !timeAxis[1].checked);
+    timeAxis.change(function () {
+        timeAxisItems.prop('disabled', !this.checked);
+    });
+
+    businessHourItems.prop('disabled', !businessHours[1].checked);
+    businessHours.change(function () {
+        businessHourItems.prop('disabled', !this.checked);
+    });
 });
