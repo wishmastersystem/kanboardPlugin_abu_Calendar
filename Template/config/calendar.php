@@ -100,12 +100,7 @@
             'values'  => $values,
         )) ?>
 
-        <?php $firstday = $this->helper->calendar->getParams()['firstDay'] ?>
-        <?= $this->form->label(
-                $firstday == '1' ? t('Weekdays, Mon ... Sun') : t('Weekdays, Sun ... Sat'),
-                'calendar_weekdays'
-            )
-        ?>
+        <?= $this->form->label(t('Weekdays, Mon ... Sun'), 'calendar_weekdays') ?>
         <?= $this->form->hidden('calendar_weekdays', $values, array(), array()) ?>
 
         <input type='checkbox' class='cal-wd' />

@@ -5,11 +5,6 @@ $(function () {
         return;
     }
 
-    $('.cal-tp').timepicker({
-        stepMinute: 30,
-        timeFormat: 'HH:mm',
-    });
-
     $('#cal-config').submit(function () {
         let weekdays = '';
 
@@ -20,10 +15,12 @@ $(function () {
         $('#form-calendar_weekdays').val(weekdays);
     });
 
-    let i = 0;
-    let weekdays = $('#form-calendar_weekdays').val();
-    $('.cal-wd').each(function () {
-        this.checked = weekdays[i++] == '1';
+
+    // Timepicker
+
+    $('.cal-tp').timepicker({
+        stepMinute: 30,
+        timeFormat: 'HH:mm',
     });
 
     const timeAxis = $('input[name="calendar_timeaxis"]');
@@ -40,5 +37,24 @@ $(function () {
     businessHourItems.prop('disabled', !businessHours[1].checked);
     businessHours.change(function () {
         businessHourItems.prop('disabled', !this.checked);
+    });
+
+    // Weekdays
+
+    function getLabelText(id) {
+        return id == '1' ? 'Weekdays, Mon ... Sun' : 'Weekdays, Sun ... Sat';
+    }
+
+    const firstDay = $('#form-calendar_firstday');
+
+    $('label[for="form-calendar_weekdays"]').text(getLabelText(firstDay.prop('selectedIndex')));
+    firstDay.change(function () {
+        $('label[for="form-calendar_weekdays"]').text(getLabelText(this.selectedIndex));
+    });
+
+    let i = 0;
+    let weekdays = $('#form-calendar_weekdays').val();
+    $('.cal-wd').each(function () {
+        this.checked = weekdays[i++] == '1';
     });
 });

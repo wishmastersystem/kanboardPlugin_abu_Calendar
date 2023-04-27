@@ -7,7 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
-- Nothing so far
+- Enable/disable timeaxis and business hours.
+- Specify weekdays for business hours.
 
 ---
 

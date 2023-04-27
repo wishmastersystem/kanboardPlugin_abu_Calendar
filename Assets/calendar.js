@@ -1,4 +1,7 @@
 KB.component('calendar', function (containerElement, options) {
+    const config = JSON.parse(options.config);
+    // console.log(config);
+
     let modeMapping = {
         month: 'month',
         week: 'agendaWeek',
@@ -6,7 +9,7 @@ KB.component('calendar', function (containerElement, options) {
     };
 
     function getTimeFormat() {
-        let fmt24h = $('#form-calendar_timeformat').val() === 'H:i';
+        let fmt24h = config.timeFormat === 'H:i';
         return [
             fmt24h ? 'HH' : null, // slotLabelFormat
             fmt24h ? 'HH:mm' : null, // eventTimeFormat
@@ -14,18 +17,18 @@ KB.component('calendar', function (containerElement, options) {
     }
 
     function getMinMaxTime() {
-        let opt = $('#form-calendar_timeaxis').val() == '1';
+        let opt = config.timeAxis;
         return [
-            opt ? $('#form-calendar_mintime').val() : '00:00',
-            opt ? $('#form-calendar_maxtime').val() : '24:00',
+            opt ? config.timeAxis.minTime : '00:00',
+            opt ? config.timeAxis.maxTime : '24:00',
         ];
     }
 
     function getWeekdays() {
         let arr = [];
-        let weekdays = $('#form-calendar_weekdays').val();
+        let weekdays = config.businessHours.weekDays;
 
-        if ($('#form-calendar_firstday').val() == '1') {
+        if (config.firstDay == '1') {
             weekdays = weekdays[weekdays.length - 1] + weekdays.substr(0, 6);
         }
 
@@ -36,10 +39,6 @@ KB.component('calendar', function (containerElement, options) {
         }
 
         return arr;
-    }
-
-    function getBool(name) {
-        return $(`#form-${name}`).val() == '1';
     }
 
     function formatTimeString(str) {
@@ -60,7 +59,7 @@ KB.component('calendar', function (containerElement, options) {
 
     this.render = function () {
         let calendar = $(containerElement);
-        let mode = $('#form-calendar_view').val();
+        let mode = config.view;
         if (window.location.hash) { // Check if hash contains mode
             let hashMode = window.location.hash.substr(1);
             mode = modeMapping[hashMode] || mode;
@@ -71,7 +70,7 @@ KB.component('calendar', function (containerElement, options) {
 
         calendar.fullCalendar({
             locale: $('html').attr('lang'),
-            firstDay: Number($('#form-calendar_firstday').val()),
+            firstDay: Number(config.firstDay),
             slotLabelFormat: timeformat[0],
             eventTimeFormat: timeformat[1],
 
@@ -80,20 +79,20 @@ KB.component('calendar', function (containerElement, options) {
             // A value of true will limit the number of events to the height of the day cell.
             defaultView: mode,
 
-            allDaySlot: getBool('calendar_allday'),
-            navLinks: getBool('calendar_navlinks'),
-            nowIndicator: getBool('calendar_nowindic'),
-            weekNumbers: getBool('calendar_weeknums'),
+            allDaySlot: config.allDaySlot,
+            navLinks: config.navLinks,
+            nowIndicator: config.nowIndicator,
+            weekNumbers: config.weekNumbers,
             weekNumberCalculation: 'ISO',
 
             minTime: minmaxtime[0],
             maxTime: minmaxtime[1],
 
-            businessHours: ($('#form-calendar_business').val() == '0') ? null : {
+            businessHours: !config.businessHours.enable ? null : {
                 // Days of week. an array of zero-based day of week integers (0=Sunday)
                 dow: getWeekdays(),
-                start: $('#form-calendar_maxtimebusi').val(),
-                end: $('#form-calendar_mintimebusi').val(),
+                start: config.businessHours.minTime,
+                end: config.businessHours.maxTime,
             },
 
             header: {
@@ -187,9 +186,9 @@ KB.component('calendar', function (containerElement, options) {
         $(leftToolbar).append('<input type="text" class="cal-dp" />');
 
         $('.cal-dp').datepicker({
-            // changeYear: true,
-            showWeek: getBool('calendar_weeknums'),
-            firstDay: Number($('#form-calendar_firstday').val()),
+            // changeYear: true, // Adds a year selector on top
+            showWeek: config.weekNumbers,
+            firstDay: Number(config.firstDay),
             onClose: function (dateText) {
                 if (dateText.length) {
                     calendar.fullCalendar('gotoDate', dateText);

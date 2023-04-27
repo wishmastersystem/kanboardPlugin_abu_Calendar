@@ -1,4 +1,3 @@
-<?= $this->render('Calendar:calendar/params', array('params' => $params)) ?>
 <?= $this->projectHeader->render($project, 'CalendarController', 'project', false, 'Calendar') ?>
 
 <?= $this->calendar->render(

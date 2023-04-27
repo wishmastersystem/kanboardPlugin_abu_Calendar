@@ -24,33 +24,45 @@ class CalendarHelper extends Base
         $params = array(
             'checkUrl' => $checkUrl,
             'saveUrl' => $saveUrl,
+            'config' => $this->getConfig(),
         );
 
         return '<div class="js-calendar" data-params=\''.json_encode($params, JSON_HEX_APOS).'\'></div>';
     }
 
     /**
-     * Collect params for the calendar
+     * Collect config for the calendar
      *
-     * @return array
+     * @return string json
      */
-    public function getParams(): array
+    private function getConfig(): string
     {
-        return array(
-            'allDaySlot'    => $this->configModel->get('calendar_alldayslot', CALENDAR_ALLDAYSLOT),
+        $config = array(
+            'allDaySlot'    => getBool($this->configModel->get('calendar_alldayslot', CALENDAR_ALLDAYSLOT)),
             'firstDay'      => $this->configModel->get('calendar_firstday', CALENDAR_FIRSTDAY),
-            'maxTime'       => $this->configModel->get('calendar_maxtime', CALENDAR_MAXTIME),
-            'minTime'       => $this->configModel->get('calendar_mintime', CALENDAR_MINTIME),
-            'maxTimeBusi'   => $this->configModel->get('calendar_maxtimebusi', CALENDAR_MAXTIMEBUSI),
-            'minTimeBusi'   => $this->configModel->get('calendar_mintimebusi', CALENDAR_MINTIMEBUSI),
-            'navLinks'      => $this->configModel->get('calendar_navlinks', CALENDAR_NAVLINKS),
-            'nowIndicator'  => $this->configModel->get('calendar_nowindic', CALENDAR_NOWINDIC),
+            'navLinks'      => getBool($this->configModel->get('calendar_navlinks', CALENDAR_NAVLINKS)),
+            'nowIndicator'  => getBool($this->configModel->get('calendar_nowindic', CALENDAR_NOWINDIC)),
             'timeFormat'    => $this->dateParser->getUserTimeFormat(),
             'view'          => $this->configModel->get('calendar_view', CALENDAR_VIEW),
-            'weekNumbers'   => $this->configModel->get('calendar_weeknums', CALENDAR_WEEKNUMS),
-            'weekDays'      => $this->configModel->get('calendar_weekdays', CALENDAR_WEEKDAYS),
-            'timeAxis'      => $this->configModel->get('calendar_timeaxis', CALENDAR_TIMEAXIS),
-            'businessHours' => $this->configModel->get('calendar_business', CALENDAR_BUSINESS),
+            'weekNumbers'   => getBool($this->configModel->get('calendar_weeknums', CALENDAR_WEEKNUMS)),
+            'timeAxis' => array(
+                'enable'    => getBool($this->configModel->get('calendar_timeaxis', CALENDAR_TIMEAXIS)),
+                'minTime'   => $this->configModel->get('calendar_mintime', CALENDAR_MINTIME),
+                'maxTime'   => $this->configModel->get('calendar_maxtime', CALENDAR_MAXTIME),
+            ),
+            'businessHours' => array(
+                'enable'    => getBool($this->configModel->get('calendar_business', CALENDAR_BUSINESS)),
+                'minTime'   => $this->configModel->get('calendar_mintimebusi', CALENDAR_MINTIMEBUSI),
+                'maxTime'   => $this->configModel->get('calendar_maxtimebusi', CALENDAR_MAXTIMEBUSI),
+                'weekDays'  => $this->configModel->get('calendar_weekdays', CALENDAR_WEEKDAYS),
+            ),
         );
+
+        return json_encode($config);
     }
+}
+
+function getBool($expr)
+{
+    return $expr === '1';
 }
