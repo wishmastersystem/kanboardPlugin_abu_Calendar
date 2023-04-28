@@ -17,7 +17,7 @@ KB.component('calendar', function (containerElement, options) {
     }
 
     function getMinMaxTime() {
-        let opt = config.timeAxis;
+        let opt = config.timeAxis.enable;
         return [
             opt ? config.timeAxis.minTime : '00:00',
             opt ? config.timeAxis.maxTime : '24:00',
