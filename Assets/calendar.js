@@ -183,7 +183,7 @@ KB.component('calendar', function (containerElement, options) {
 
         const toolBar = document.querySelector('div.fc-header-toolbar');
         const leftToolbar = toolBar.querySelectorAll('div.fc-left');
-        $(leftToolbar).append('<input type="text" class="cal-dp" />');
+        $(leftToolbar).append('<input type="text" class="cal-dp" style="width:0px;"/>');
 
         $('.cal-dp').datepicker({
             // changeYear: true, // Adds a year selector on top
