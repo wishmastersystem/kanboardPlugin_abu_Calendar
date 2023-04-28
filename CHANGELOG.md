@@ -7,10 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
-- Enable/disable timeaxis and business hours.
-- Specify weekdays for business hours.
+- Nothing so far.
 
 ---
+
+## [v1.4.0](https://codeberg.org/abu/Calendar/releases/tag/v1.4.0) - 2023-04-28
+
+### Added
+
+- Enable/disable timeaxis and business hours.
+- Specify weekdays for business hours.
 
 ## [v1.3.0](https://codeberg.org/abu/Calendar/releases/tag/v1.3.0) - 2023-04-19
 
