@@ -186,6 +186,7 @@ KB.component('calendar', function (containerElement, options) {
         $(leftToolbar).append('<input type="text" class="cal-dp" style="width:0px;"/>');
 
         $('.cal-dp').datepicker({
+             dateFormat: 'yy-mm-dd',
             // changeYear: true, // Adds a year selector on top
             showWeek: config.weekNumbers,
             firstDay: Number(config.firstDay),
