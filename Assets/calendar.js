@@ -156,7 +156,7 @@ KB.component('calendar', function (containerElement, options) {
             },
 
             eventRender: function(eventObj, el, view) {
-                if (eventObj.avatar !== '') {
+                if (config.avatars && eventObj.avatar !== '') {
                     const avatar = document.createElement('div');
                     avatar.innerHTML = eventObj.avatar,
                     el[0].firstChild.appendChild(avatar);

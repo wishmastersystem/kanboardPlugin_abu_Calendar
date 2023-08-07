@@ -45,6 +45,7 @@ class CalendarHelper extends Base
             'timeFormat'    => $this->dateParser->getUserTimeFormat(),
             'view'          => $this->configModel->get('calendar_view', CALENDAR_VIEW),
             'weekNumbers'   => getBool($this->configModel->get('calendar_weeknums', CALENDAR_WEEKNUMS)),
+            'avatars'       => getBool($this->configModel->get('calendar_avatars', CALENDAR_AVATARS)),
             'timeAxis' => array(
                 'enable'    => getBool($this->configModel->get('calendar_timeaxis', CALENDAR_TIMEAXIS)),
                 'minTime'   => $this->configModel->get('calendar_mintime', CALENDAR_MINTIME),

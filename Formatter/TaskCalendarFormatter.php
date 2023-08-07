@@ -65,6 +65,7 @@ class TaskCalendarFormatter extends BaseFormatter implements FormatterInterface
     {
         $editable = $this->configModel->get('calendar_dragging', CALENDAR_DRAGGING) == '1';
         $alldayConf = $this->configModel->get('calendar_allday', CALENDAR_ALLDAY) == '1';
+        $showAvatars = $this->configModel->get('calendar_avatars', CALENDAR_AVATARS) == '1';
         $events = array();
 
         foreach ($this->query->findAll() as $task) {
@@ -100,7 +101,7 @@ class TaskCalendarFormatter extends BaseFormatter implements FormatterInterface
                 'editable' => $editable,
                 'allday' => $allDay,
 
-                'avatar' => $task['owner_id'] != 0 ? $this->helper->avatar->render(
+                'avatar' => $showAvatars && $task['owner_id'] != 0 ? $this->helper->avatar->render(
                     $task['owner_id'],
                     $task['assignee_username'],
                     $task['assignee_name'],

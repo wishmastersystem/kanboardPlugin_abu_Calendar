@@ -64,6 +64,13 @@
         )) ?>
 
         <?= $this->render($checkbox, array(
+            'label'   => t('Display Avatars'),
+            'name'    => 'calendar_avatars',
+            'default' => CALENDAR_AVATARS,
+            'values'  => $values,
+        )) ?>
+
+        <?= $this->render($checkbox, array(
             'label'   => t('Moving and resizing of events/tasks'),
             'name'    => 'calendar_dragging',
             'default' => CALENDAR_DRAGGING,
