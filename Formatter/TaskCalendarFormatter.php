@@ -99,6 +99,15 @@ class TaskCalendarFormatter extends BaseFormatter implements FormatterInterface
                 'end' => $endDate->format($format),
                 'editable' => $editable,
                 'allday' => $allDay,
+
+                'avatar' => $task['owner_id'] != 0 ? $this->helper->avatar->render(
+                    $task['owner_id'],
+                    $task['assignee_username'],
+                    $task['assignee_name'],
+                    $task['assignee_email'],
+                    $task['assignee_avatar_path'],
+                    'avatar avatar-20 avatar-inline', 20
+                ) . '<span>' . ($task['assignee_name'] !== '' ? $task['assignee_name'] : $task['assignee_username']) . '</span>' : '',
             );
         }
 
