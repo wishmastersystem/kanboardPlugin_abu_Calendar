@@ -171,6 +171,7 @@ KB.component('calendar', function (containerElement, options) {
                         break;
                     }
                 }
+
                 let url = options.checkUrl;
                 let params = {
                     'start': view.start.format(),
@@ -179,6 +180,11 @@ KB.component('calendar', function (containerElement, options) {
 
                 for (let key in params) {
                     url += '&' + key + '=' + params[key];
+                }
+
+                // No avatars in user calendar
+                if (new URLSearchParams(url).has('action', 'userEvents')) {
+                    config.avatars = false;
                 }
 
                 $.getJSON(url, function (events) {
