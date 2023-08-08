@@ -75,8 +75,9 @@ KB.component('calendar', function (containerElement, options) {
             eventTimeFormat: timeformat[1],
 
             editable: false, // Determines whether the events on the calendar can be modified. Default: false
-            eventLimit: true, // Limits the number of events displayed on a day. The rest will show up in a popover.
+            // Limits the number of events displayed on a day. The rest will show up in a popover.
             // A value of true will limit the number of events to the height of the day cell.
+            eventLimit: true,
             defaultView: mode,
 
             allDaySlot: config.allDaySlot,
@@ -132,7 +133,7 @@ KB.component('calendar', function (containerElement, options) {
                             droppedDate = val.end ? val.end : null;
                             break;
                         default:
-                            console.error('Illegal name:', name);
+                            // console.error('Illegal name:', name);
                         }
                         // console.log(name, droppedDate ? formatTimeString(droppedDate.format()) : '#')
                         return droppedDate ? formatTimeString(droppedDate.format()) : '';
@@ -155,7 +156,7 @@ KB.component('calendar', function (containerElement, options) {
                 }));
             },
 
-            eventRender: function(eventObj, el) {
+            eventRender: function (eventObj, el) {
                 if (config.avatars && eventObj.avatar !== '') {
                     $(el[0].firstChild).append(`<div>${eventObj.avatar}</div>`);
                 }
@@ -198,7 +199,7 @@ KB.component('calendar', function (containerElement, options) {
         $(leftToolbar).append('<input type="text" class="cal-dp" style="width:0px;"/>');
 
         $('.cal-dp').datepicker({
-             dateFormat: 'yy-mm-dd',
+            dateFormat: 'yy-mm-dd',
             // changeYear: true, // Adds a year selector on top
             showWeek: config.weekNumbers,
             firstDay: Number(config.firstDay),

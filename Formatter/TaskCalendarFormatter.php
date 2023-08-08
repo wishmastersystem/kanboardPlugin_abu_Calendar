@@ -107,7 +107,8 @@ class TaskCalendarFormatter extends BaseFormatter implements FormatterInterface
                     $task['assignee_name'],
                     $task['assignee_email'],
                     $task['assignee_avatar_path'],
-                    'avatar avatar-20 avatar-inline', 20
+                    'avatar avatar-20 avatar-inline',
+                    20
                 ) . '<span>' . ($task['assignee_name'] !== '' ? $task['assignee_name'] : $task['assignee_username']) . '</span>' : '',
             );
         }
