@@ -10,6 +10,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Nothing so far.
 
 ---
+## [v1.5.0](https://codeberg.org/abu/Calendar/releases/tag/v1.5.0) - 2023-08-08
+
+### Added
+
+- [#3](https://codeberg.org/abu/Calendar/issues/3) Add profile pictures.  
+This feature is optional. It can be disabled via the calendar settings, but it's enabled by default.
+The pictures are only shown in the project calendars, but never in the user calendar.
+
 ## [v1.4.1](https://codeberg.org/abu/Calendar/releases/tag/v1.4.1) - 2023-07-19
 
 ### Fixed

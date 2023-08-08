@@ -27,3 +27,8 @@ Note: Plugin folder is case-sensitive.
 
 ## License
 - This project is distributed under the [MIT License](https://choosealicense.com/licenses/mit/ "Read The MIT license")
+
+## Donations
+If you want to support my work, you can donate via
+[![Donate via LiberaPay](https://liberapay.com/assets/widgets/donate.svg)](https://liberapay.com/abu/donate)
+or [PayPal](https://paypal.me/alfredbuehler).
