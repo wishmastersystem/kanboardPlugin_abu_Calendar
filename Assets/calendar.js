@@ -155,11 +155,9 @@ KB.component('calendar', function (containerElement, options) {
                 }));
             },
 
-            eventRender: function(eventObj, el, view) {
+            eventRender: function(eventObj, el) {
                 if (config.avatars && eventObj.avatar !== '') {
-                    const avatar = document.createElement('div');
-                    avatar.innerHTML = eventObj.avatar,
-                    el[0].firstChild.appendChild(avatar);
+                    $(el[0].firstChild).append(`<div>${eventObj.avatar}</div>`);
                 }
             },
 
