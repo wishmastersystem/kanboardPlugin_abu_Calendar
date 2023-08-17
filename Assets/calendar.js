@@ -157,6 +157,7 @@ KB.component('calendar', function (containerElement, options) {
             },
 
             eventRender: function (eventObj, el) {
+                if (eventObj.avatar == undefined) return;
                 if (config.avatars && eventObj.avatar !== '') {
                     $(el[0].firstChild).append(`<div>${eventObj.avatar}</div>`);
                 }

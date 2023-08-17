@@ -7,7 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
-- Nothing so far.
+### Fixed
+
+- Avoid displaying avatars for events created by other plugins, like e.g. [Subtaskdate](https://github.com/eSkiSo/Subtaskdate).
 
 ---
 ## [v1.5.0](https://codeberg.org/abu/Calendar/releases/tag/v1.5.0) - 2023-08-08
